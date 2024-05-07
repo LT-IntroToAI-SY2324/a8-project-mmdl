@@ -11,14 +11,20 @@ def parse_line(line: str) -> Tuple[List[float], List[float]]:
     Returns:
         tuple of input list and output list
     """
+    
+    for i in range(len(line)):
+        if line[i] == 'x':
+            line[i] = 1
+        elif line[i] == 'b':
+            line[i] = 0
+        elif line[i] == 'o':
+            line[i] = 0.5
+
+
     tokens = line.split(",")
     output = tokens[0].strip().lower()
     out = int(tokens[0])
-    output = [0 if out == 1 else 0.5 if out == 2 else 1]
-    # if outcome == "win":
-    #    output = [1, 0, 0]  # Win
-    #elif outcome == "loss":
-    #    output = [0, 1, 0]  # Loss
+    output = [0 if out == "negative" else 0.5 if out == "positive" else 1]
    
 
     inpt = [float(x) for x in tokens[1:]]
