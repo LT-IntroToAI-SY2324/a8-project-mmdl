@@ -19,8 +19,7 @@ def parse_line(line: str) -> Tuple[List[float], List[float]]:
     #    output = [1, 0, 0]  # Win
     #elif outcome == "loss":
     #    output = [0, 1, 0]  # Loss
-    #elif outcome == "draw":
-    #    output = [0, 0, 1]  # Draw
+   
 
     inpt = [float(x) for x in tokens[1:]]
     return (inpt, output)
@@ -61,7 +60,7 @@ td = normalize(training_data)
 
 train, test = train_test_split(td)
 
-nn = NeuralNet(13, 3, 1)
+nn = NeuralNet(9, 3, 1)
 nn.train(train, iters=10000, print_interval=1000, learning_rate=0.2)
 
 for i in nn.test_with_expected(test):
